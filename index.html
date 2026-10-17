@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dilki Nanayakkara | Aspiring Data Scientist &amp; Data Engineer</title>
+  <meta name="description" content="Portfolio of Dilki Ishara Nanayakkara, an IT undergraduate at the University of Moratuwa building data engineering and data science projects with Python, SQL and PostgreSQL.">
+  <meta property="og:title" content="Dilki Nanayakkara | Aspiring Data Scientist &amp; Data Engineer">
+  <meta property="og:description" content="Data pipelines, a tourism data warehouse and more, built with Python, SQL and PostgreSQL.">
+  <meta property="og:type" content="website">
+  <style>
+    :root {
+      --navy: #12263f;
+      --navy-2: #1f3a5f;
+      --teal: #1a8a8a;
+      --teal-light: #5fd0c8;
+      --ink: #1d2733;
+      --muted: #5a6270;
+      --bg: #f6f9fb;
+      --card: #ffffff;
+      --line: #e0e7ec;
+      --shadow: 0 6px 24px rgba(18, 38, 63, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+    a { color: var(--teal); }
+    a:focus-visible, .btn:focus-visible { outline: 3px solid var(--teal-light); outline-offset: 3px; }
+    .wrap { max-width: 1020px; margin: 0 auto; padding: 0 22px; }
+
+    /* ---------- Top bar ---------- */
+    .nav { position: sticky; top: 0; z-index: 20; background: rgba(18, 38, 63, 0.96); backdrop-filter: blur(6px); }
+    .nav .wrap { display: flex; justify-content: space-between; align-items: center; min-height: 58px; flex-wrap: wrap; gap: 2px 18px; }
+    .nav .brand { color: #fff; font-weight: 700; text-decoration: none; letter-spacing: .3px; }
+    .nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; flex-wrap: wrap; }
+    .nav ul a { color: #c9d6e4; text-decoration: none; font-size: .95rem; }
+    .nav ul a:hover { color: var(--teal-light); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      background-color: var(--navy);
+      background-image:
+        url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='520'%20height='360'%20viewBox='0%200%20520%20360'%3E%0A%3Cg%20stroke='%235fd0c8'%20stroke-opacity='.28'%20stroke-width='1.2'%20fill='none'%3E%0A%3Cpath%20d='M20%2060%20L110%20120%20L200%2070%20L290%20140%20L380%2090%20L480%20150'/%3E%0A%3Cpath%20d='M110%20120%20L140%20230%20L260%20250%20L290%20140'/%3E%0A%3Cpath%20d='M200%2070%20L260%20250%20L370%20230%20L380%2090'/%3E%0A%3Cpath%20d='M140%20230%20L60%20310%20M260%20250%20L300%20335%20M370%20230%20L470%20300%20M480%20150%20L470%20300'/%3E%0A%3C/g%3E%0A%3Cg%20fill='%235fd0c8'%20fill-opacity='.55'%3E%0A%3Ccircle%20cx='20'%20cy='60'%20r='4'/%3E%3Ccircle%20cx='110'%20cy='120'%20r='5'/%3E%3Ccircle%20cx='200'%20cy='70'%20r='4'/%3E%0A%3Ccircle%20cx='290'%20cy='140'%20r='6'/%3E%3Ccircle%20cx='380'%20cy='90'%20r='4'/%3E%3Ccircle%20cx='480'%20cy='150'%20r='5'/%3E%0A%3Ccircle%20cx='140'%20cy='230'%20r='4'/%3E%3Ccircle%20cx='260'%20cy='250'%20r='5'/%3E%3Ccircle%20cx='370'%20cy='230'%20r='4'/%3E%0A%3Ccircle%20cx='60'%20cy='310'%20r='3'/%3E%3Ccircle%20cx='300'%20cy='335'%20r='3'/%3E%3Ccircle%20cx='470'%20cy='300'%20r='4'/%3E%0A%3C/g%3E%0A%3Cg%20fill='%23ffffff'%20fill-opacity='.14'%3E%0A%3Crect%20x='400'%20y='250'%20width='14'%20height='60'/%3E%3Crect%20x='420'%20y='225'%20width='14'%20height='85'/%3E%3Crect%20x='440'%20y='265'%20width='14'%20height='45'/%3E%0A%3C/g%3E%3C/svg%3E"),
+        radial-gradient(circle at 85% 20%, rgba(95, 208, 200, .22), transparent 45%),
+        linear-gradient(135deg, rgba(18, 38, 63, .88) 0%, rgba(31, 58, 95, .84) 100%),
+        url("hero-bg.jpg");   /* optional: add your own picture named hero-bg.jpg */
+      background-size: 520px 360px, auto, auto, cover;
+      background-position: center, center, center, center;
+      background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+      color: #fff;
+      padding: 72px 0 84px;
+    }
+    .hero .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; }
+    .eyebrow { color: var(--teal-light); font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; font-size: .8rem; margin: 0 0 10px; }
+    .hero h1 { margin: 0 0 10px; font-size: clamp(2.1rem, 5.5vw, 3.3rem); line-height: 1.1; }
+    .hero .role { font-size: 1.3rem; color: var(--teal-light); font-weight: 600; margin: 0 0 18px; }
+    .hero .lead { color: #d3deea; font-size: 1.05rem; max-width: 560px; margin: 0 0 28px; }
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 11px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 2px solid #fff; transition: transform .15s, background .15s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--teal-light); border-color: var(--teal-light); color: var(--navy); }
+    .btn.ghost { color: #fff; }
+    .btn.ghost:hover { background: rgba(255, 255, 255, .12); }
+
+    .portrait { justify-self: center; position: relative; width: min(300px, 70vw); aspect-ratio: 1; }
+    .portrait::before {
+      content: ""; position: absolute; inset: -12px; border-radius: 50%;
+      border: 2px dashed rgba(95, 208, 200, .6);
+    }
+    .portrait .frame {
+      position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+      border: 6px solid #fff; box-shadow: 0 14px 40px rgba(0, 0, 0, .35);
+      background: linear-gradient(135deg, var(--teal), var(--navy-2));
+      display: grid; place-items: center;
+    }
+    .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .portrait .initials { position: absolute; color: #fff; font-size: 4.2rem; font-weight: 700; letter-spacing: 2px; }
+
+    /* ---------- Sections ---------- */
+    section { padding: 64px 0 8px; }
+    section:last-of-type { padding-bottom: 64px; }
+    h2 { margin: 0 0 28px; color: var(--navy); font-size: 1.7rem; }
+    h2::after { content: ""; display: block; width: 52px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--teal), var(--teal-light)); margin-top: 8px; }
+    .about p { max-width: 760px; margin: 0 0 14px; font-size: 1.05rem; }
+
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-top: 26px; }
+    .stat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; box-shadow: var(--shadow); }
+    .stat strong { display: block; font-size: 1.7rem; color: var(--teal); line-height: 1.2; }
+    .stat span { color: var(--muted); font-size: .9rem; }
+
+    /* Projects */
+    .grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--teal);
+      border-radius: 12px; padding: 24px; box-shadow: var(--shadow); display: flex; flex-direction: column;
+      transition: transform .18s, box-shadow .18s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(18, 38, 63, .14); }
+    .card h3 { margin: 0 0 2px; color: var(--navy); font-size: 1.15rem; line-height: 1.3; }
+    .card .meta { color: var(--muted); font-size: .88rem; margin: 0 0 12px; }
+    .card ul.pts { margin: 0 0 18px; padding-left: 1.1em; }
+    .card ul.pts li { margin-bottom: 7px; }
+    .card .go { margin-top: auto; font-weight: 700; text-decoration: none; }
+    .card .go:hover { text-decoration: underline; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; padding: 0; list-style: none; }
+    .tags li { background: #e3f3f2; color: #0e5d5b; padding: 2px 11px; border-radius: 999px; font-size: .78rem; font-weight: 600; }
+
+    /* Skills */
+    .skill-groups { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .skill-box { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px; box-shadow: var(--shadow); }
+    .skill-box h3 { margin: 0 0 12px; color: var(--navy); font-size: 1.05rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .chips li { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 4px 12px; font-size: .88rem; }
+
+    /* Timeline */
+    .timeline { border-left: 3px solid var(--teal); margin: 0; padding: 0 0 0 24px; list-style: none; }
+    .timeline li { position: relative; margin-bottom: 22px; }
+    .timeline li::before { content: ""; position: absolute; left: -33px; top: 6px; width: 15px; height: 15px; border-radius: 50%; background: var(--teal-light); border: 3px solid var(--navy-2); }
+    .timeline h3 { margin: 0; color: var(--navy); font-size: 1.05rem; }
+    .timeline p { margin: 2px 0 0; color: var(--muted); }
+
+    /* Contact */
+    .contact-box { background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: #fff; border-radius: 16px; padding: 38px 30px; }
+    .contact-box h2 { color: #fff; }
+    .contact-box p { margin: 0 0 18px; color: #d3deea; max-width: 560px; }
+
+    footer { text-align: center; color: var(--muted); font-size: .88rem; padding: 28px 0 36px; }
+
+    @media (max-width: 760px) {
+      .hero { padding: 48px 0 56px; }
+      .hero .wrap { grid-template-columns: 1fr; text-align: center; }
+      .hero .lead { margin-left: auto; margin-right: auto; }
+      .btns { justify-content: center; }
+      .portrait { order: -1; width: min(230px, 62vw); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .card, .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top">Dilki Nanayakkara</a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <div class="hero">
+      <div class="wrap">
+        <div>
+          <p class="eyebrow">Portfolio</p>
+          <h1>Dilki Ishara Nanayakkara</h1>
+          <p class="role">Aspiring Data Scientist &amp; Data Engineer</p>
+          <p class="lead">
+            IT undergraduate at the University of Moratuwa. I build data pipelines and warehouses with
+            Python, SQL and PostgreSQL, and I am looking for an internship where I can build reliable
+            data solutions in a professional team.
+          </p>
+          <div class="btns">
+            <a class="btn primary" href="#projects">View my projects</a>
+            <a class="btn ghost" href="https://github.com/Dilki31">GitHub</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/dilki-nanayakkara-16b539365">LinkedIn</a>
+          </div>
+        </div>
+        <div class="portrait">
+          <div class="frame">
+            <span class="initials" aria-hidden="true">DN</span>
+            <!-- Put your photo in this folder and name it photo.jpg -->
+            <img src="photo.jpg" alt="Portrait of Dilki Nanayakkara" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+
+      <section id="about" class="about">
+        <h2>About me</h2>
+        <p>
+          I am a Diploma in Information Technology student at the Institute of Technology, University of
+          Moratuwa, currently in Semester 4. I enjoy turning raw data into reliable, usable datasets, and I
+          am building my skills through hands-on projects in data engineering and data science.
+        </p>
+        <p>
+          Outside the technical work, I won recognition in the English Club's Best Speakers' Competition,
+          and I like explaining my work clearly to teammates and non-technical people.
+        </p>
+        <div class="stats">
+          <div class="stat"><strong>4</strong><span>portfolio projects</span></div>
+          <div class="stat"><strong>PostgreSQL</strong><span>used in 3 of them</span></div>
+          <div class="stat"><strong>1,825</strong><span>weather records loaded by my ETL pipeline</span></div>
+          <div class="stat"><strong>22</strong><span>tests passing in my final year project</span></div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="grid">
+
+          <article class="card">
+            <h3>Sri Lanka Weather ETL Pipeline</h3>
+            <p class="meta">Data engineering | Personal project</p>
+            <ul class="tags" aria-label="Technologies">
+              <li>Python</li><li>Pandas</li><li>SQLAlchemy</li><li>PostgreSQL</li><li>REST API</li>
+            </ul>
+            <ul class="pts">
+              <li>Extracts a year of daily weather data (1,825 records, 5 cities) from the Open-Meteo REST API.</li>
+              <li>Cleans and validates the data with Pandas, then loads it into PostgreSQL with idempotent upserts.</li>
+              <li>Includes logging, error handling and a README with setup steps and example SQL queries.</li>
+            </ul>
+            <a class="go" href="https://github.com/Dilki31/sri-lanka-etl-pipeline">View on GitHub &rarr;</a>
+          </article>
+
+          <article class="card">
+            <h3>Sri Lanka Tourism Data Warehouse</h3>
+            <p class="meta">Data engineering and analysis | Personal project</p>
+            <ul class="tags" aria-label="Technologies">
+              <li>Python</li><li>SQL</li><li>PostgreSQL</li><li>Pandas</li><li>Star schema</li>
+            </ul>
+            <ul class="pts">
+              <li>Designed a star schema (two dimension tables, one fact table) for Sri Lanka's top 20 tourist source markets, using SLTDA data.</li>
+              <li>Built a validating Python loader that upserts rows in a single transaction.</li>
+              <li>Analysed market and regional shares with joins, GROUP BY and window functions (SUM() OVER, LAG).</li>
+            </ul>
+            <a class="go" href="https://github.com/Dilki31/sri-lanka-tourism-warehouse">View on GitHub &rarr;</a>
+          </article>
+
+          <article class="card">
+            <h3>GuideLanka</h3>
+            <p class="meta">Final year project | Team of 5</p>
+            <ul class="tags" aria-label="Technologies">
+              <li>React</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>Supabase</li>
+            </ul>
+            <ul class="pts">
+              <li>AI-based rural tourism marketplace and safari optimisation platform for Yala Block 5.</li>
+              <li>I developed the tourist web application: driver listings, safari booking, booking history, Google login and a park rules quiz.</li>
+              <li>Wrote 22 tests, all passing.</li>
+            </ul>
+            <a class="go" href="https://github.com/Pathum830/GuideLanka-New/tree/dilki">View on GitHub &rarr;</a>
+          </article>
+
+          <article class="card">
+            <h3>Exploratory Data Analysis: Titanic Dataset</h3>
+            <p class="meta">Data analysis | Personal project</p>
+            <ul class="tags" aria-label="Technologies">
+              <li>Python</li><li>Pandas</li><li>Matplotlib</li>
+            </ul>
+            <ul class="pts">
+              <li>Cleaned the data and imputed missing values in the Age, Cabin and Embarked columns.</li>
+              <li>Analysed and visualised survival rates by gender and passenger class.</li>
+            </ul>
+            <a class="go" href="https://github.com/Dilki31/titanic-data-analysis">View on GitHub &rarr;</a>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skill-groups">
+          <div class="skill-box">
+            <h3>Languages and databases</h3>
+            <ul class="chips"><li>Python</li><li>SQL</li><li>PostgreSQL</li><li>Data Modeling (Star Schema)</li></ul>
+          </div>
+          <div class="skill-box">
+            <h3>Data science and analysis</h3>
+            <ul class="chips"><li>ETL Pipelines</li><li>Pandas</li><li>NumPy</li><li>Matplotlib</li><li>Data Cleaning</li><li>EDA</li><li>Machine Learning</li><li>Statistical Analysis</li></ul>
+          </div>
+          <div class="skill-box">
+            <h3>Web and tools</h3>
+            <ul class="chips"><li>React</li><li>Node.js</li><li>Express.js</li><li>REST APIs</li><li>Git and GitHub</li><li>Microsoft Excel</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2>Education and certifications</h2>
+        <ul class="timeline">
+          <li>
+            <h3>Diploma in Information Technology</h3>
+            <p>Institute of Technology, University of Moratuwa, Sri Lanka | 2025 to present | Semester 4</p>
+          </li>
+          <li>
+            <h3>Machine Learning with Python</h3>
+            <p>freeCodeCamp</p>
+          </li>
+          <li>
+            <h3>100 Projects Completed (App Development and Computer Science)</h3>
+            <p>DP Education Coding School</p>
+          </li>
+          <li>
+            <h3>Best Speakers' Competition</h3>
+            <p>Certificate for outstanding performance, English Club, University of Moratuwa</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <div class="contact-box">
+          <h2>Let's connect</h2>
+          <p>I am open to data engineering and data science internships. The best way to reach me is by email or LinkedIn.</p>
+          <div class="btns">
+            <a class="btn primary" href="mailto:dilkinanayakkara39@gmail.com">dilkinanayakkara39@gmail.com</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/dilki-nanayakkara-16b539365">LinkedIn</a>
+            <a class="btn ghost" href="https://github.com/Dilki31">GitHub</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>&copy; 2026 Dilki Ishara Nanayakkara</footer>
+
+</body>
+</html>
